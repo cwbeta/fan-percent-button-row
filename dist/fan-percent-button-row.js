@@ -26,17 +26,17 @@ class CustomFanPercentRow extends LitElement {
 			lowPercentage: 33,
 			medPercentage: 66,
 			hiPercentage: 100,
-			width: '30px',
-			height: '30px',
+			width: '48px',
+			height: '48px',
 			isOffColor: '#f44c09',
 			isOnLowColor: '#43A047',
 			isOnMedColor: '#43A047',
 			isOnHiColor: '#43A047',
 			buttonInactiveColor: '#759aaa',
-			customOffText: 'OFF',
-			customLowText: 'LOW',
-			customMedText: 'MED',
-			customHiText: 'HIGH',
+			customOffText: '关闭',
+			customLowText: '低',
+			customMedText: '中',
+			customHiText: '高',
 		};
 	}
 
@@ -77,24 +77,33 @@ class CustomFanPercentRow extends LitElement {
 	static get styles() {
 		return css`
 			:host {
-				line-height: inherit;
+				font-size: var(--paper-font-subhead_-_font-size);
+    		font-weight: var(--paper-font-subhead_-_font-weight);
+    		line-height: var(--paper-font-subhead_-_line-height);
 			}
 			.box {
 				display: flex;
 				flex-direction: row;
 			}
+			.info{
+				font-size:16.8px;
+			}
 			.percentage {
 				margin-left: 2px;
 				margin-right: 2px;
-				background-color: #759aaa;
-				border: 1px solid lightgrey; 
-				border-radius: 4px;
-				font-size: 10px !important;
-				color: inherit;
+				background: var(--ha-card-background,var(--card-background-color,#fff));
+				border-radius: var(--ha-card-border-radius,12px);
+				border-width: var(--ha-card-border-width,1px);
+				border-style: solid;
+				border-color: var(--ha-card-border-color,var(--divider-color,#e0e0e0));
+				color: var(--primary-text-color);
+				font-size: 16.8px;
 				text-align: center;
 				float: left !important;
 				padding: 1px;
 				cursor: pointer;
+				transition: all 0.3s ease-out 0s;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 			}
 		`;
 	}
@@ -252,24 +261,23 @@ class CustomFanPercentRow extends LitElement {
 			}
 		} else {
 			if (low == 'on') {
-				lowcolor = 'background-color: var(--switch-checked-color)';
+				lowcolor = 'color: var(--state-switch-outlet-on-color, var(--state-switch-on-color, var(--state-switch-active-color, var(--state-active-color)))); border-color: var(--state-switch-outlet-on-color, var(--state-switch-on-color, var(--state-switch-active-color, var(--state-active-color))));';
 			} else {
-				lowcolor = 'background-color: var(--switch-unchecked-color)';
+				lowcolor = 'background-color: var(--card-background-color)';
 			}
 			if (med == 'on') {
-				medcolor = 'background-color: var(--switch-checked-color)';
+				medcolor = 'color: var(--state-switch-outlet-on-color, var(--state-switch-on-color, var(--state-switch-active-color, var(--state-active-color)))); border-color: var(--state-switch-outlet-on-color, var(--state-switch-on-color, var(--state-switch-active-color, var(--state-active-color))));';
 			} else {
-				medcolor = 'background-color: var(--switch-unchecked-color)';
+				medcolor = 'background-color: var(--card-background-color)';
 			}
 			if (high == 'on') {
-				hicolor = 'background-color: var(--switch-checked-color)';
+				hicolor = 'color: var(--state-switch-outlet-on-color, var(--state-switch-on-color, var(--state-switch-active-color, var(--state-active-color)))); border-color: var(--state-switch-outlet-on-color, var(--state-switch-on-color, var(--state-switch-active-color, var(--state-active-color))));';
 			} else {
-				hicolor = 'background-color: var(--switch-unchecked-color)';
+				hicolor = 'background-color: var(--card-background-color)';
 			}
 			if (offstate == 'on') {
-				offcolor = 'background-color: var(--switch-checked-color)';
-			} else {
-				offcolor = 'background-color: var(--switch-unchecked-color)';
+				offcolor = 'background-color: var(--card-background-color)';
+				offcolor = 'background-color: var(--card-background-color)';
 			}
 		}
 
